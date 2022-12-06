@@ -1,11 +1,17 @@
 import React from 'react';
+import { Card } from 'primereact/card';
+import { Button } from 'primereact/button';
 
 const Counter = () => {
     return (
         <>
             <div class="grid">
                 <div className='col-4'>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus assumenda, recusandae non quos accusantium vero odio fugiat quis cumque, quo provident optio beatae debitis tempore dolore necessitatibus pariatur officiis eum?
+                    <Card className='m-3 shadow-5 bg-blue-600'>
+                        <h3 className='text-4xl p-0 m-2'>Counter</h3>
+                        <Button label={'Increment'} className='p-button-success mr-2' />
+                        <Button label={'Decrement'} className='p-button-warning' />
+                    </Card>
                 </div>
             </div>
         </>
