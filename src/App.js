@@ -1,7 +1,9 @@
 import "./App.css";
+import React from "react";
 import { Menubar } from "primereact/menubar";
 import Counter from "./components/Counter";
 import Greet from "./components/Greet";
+import UserList from "./components/UserList";
 
 const App = () => {
   return (
@@ -11,7 +13,8 @@ const App = () => {
         start={"Prime React"}
       />
       {/* <Counter /> */}
-      <Greet />
+      {/* <Greet /> */}
+      <UserList />
     </div>
   );
 };
