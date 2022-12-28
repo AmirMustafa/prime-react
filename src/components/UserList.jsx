@@ -6,24 +6,31 @@ const UserList = () => {
     let [state, setState] = useState({
         loading: false,
         users: [],
-        error: null
+        errorMessage: null
     });
 
-    useEffect(async () => {
+    useEffect( () => {
         try {
-            setState({...state, loading: true});
-            const response = await UserService.getAllUsers();
-            setState({...state, users: response, loading: false});
-            console.log(response);
+            const fetchData = async () => {
+                setState({...state, loading: true});
+                const response = await UserService.getAllUsers();
+                let { results } = response.data;
+                console.log(results);
+                setState({...state, users: results, loading: false});
+            };
+            fetchData();
         } catch (err) {
             console.log(err);
-            setState({...state, error: err});
+            setState({...state, errorMessage: err});
         }
     }, []);
 
     return (
         <>
             <h2>User List</h2>
+            <pre>
+                {JSON.stringify(state.users)}
+            </pre>
         </>
     )
 };
