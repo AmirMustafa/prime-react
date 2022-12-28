@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { UserService } from '../service/User';
+import { DataTable } from 'primereact/datatable';
+import { Column } from 'primereact/column';
 
 const UserList = () => {
 
@@ -25,12 +27,35 @@ const UserList = () => {
         }
     }, []);
 
+    let displaySNo = (rowData) => {
+        return rowData.login.uuid.substring(1,5);
+    }
+    let displayName = (rowData) => {
+        return <span>{rowData.name.title}. {rowData.name.first} {rowData.name.last}</span>;
+    }
+    let displayImage = (rowData) => {
+        return <img src={rowData.picture.thumbnail} alt="" />;
+    }
+    let displayAge = (rowData) => {
+        return <span>{rowData.dob.age} years</span>;
+    }
+
     return (
         <>
-            <h2>User List</h2>
-            <pre>
-                {JSON.stringify(state.users)}
-            </pre>
+            <div className='grid'>
+                <div className='col'>
+                    <DataTable value={state.users}>
+                        <Column sortable field="login.uuid" header={'S No.'} body={displaySNo} />
+                        <Column sortable field="picture.thumbnail" header={'Image'} body={displayImage} />
+                        <Column sortable field="name" header={'Name'} body={displayName} />
+                        <Column sortable field="dob.age" header={'Age'} body={displayAge} />
+                        <Column sortable field="email" header={'Email'} />
+                        <Column sortable field="location.city" header={'City'} />
+                        <Column sortable field="location.state" header={'State'} />
+                        <Column sortable field="location.country" header={'Country'} />
+                    </DataTable>
+                </div>
+            </div>
         </>
     )
 };
