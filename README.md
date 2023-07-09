@@ -5,6 +5,8 @@ This is used by organizations like Fox, Mercedes, Nvidia, etc
 
 Using only React components with lots of themes and UI components, It is used in new projects.
 
+Please leave a star if it was helpful.
+
 ## Documentation
 https://bit.ly/3vkmMI0
 
